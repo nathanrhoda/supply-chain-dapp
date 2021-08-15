@@ -1,10 +1,22 @@
-# supply-chain-dapp
+# Supply Chain Dapp
 Supply chain dapp from ground up architecture, smart contracts and ui
 
+## Details
 
-# Libraries
-openzeppelin
-truffle
+### - Contract address
+Rinkeby Address: 
 
-# Ipfs 
-Not used
+
+### Libraries used and why
+Openzeppelin
+
+### Version numbers
+1. Node: 
+2. Truffle:
+3. web3:
+
+### Uml Documents included in uml directory include
+1. Activity
+2. Sequence
+3. State
+4. Class
