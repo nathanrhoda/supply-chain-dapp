@@ -160,7 +160,7 @@ contract SupplyChain {
     // Increment sku
     sku = sku + 1;
     // Emit the appropriate event
-    
+    emit Harvested(_upc);
   }
 
   // Define a function 'processtItem' that allows a farmer to mark an item 'Processed'
@@ -275,8 +275,17 @@ contract SupplyChain {
   string  originFarmLongitude
   ) 
   {
+     
   // Assign values to the 8 parameters
-  
+  Item lookedUpItem = items[_upc];
+  itemSKU = lookedUpItem.sku;
+  itemUPC = lookedUpItem.upc;
+  ownerID = lookedUpItem.ownerID; 
+  originFarmerID = lookedUpItem.originFarmerID;
+  originFarmName = lookedUpItem.originFarmName;
+  originFarmInformation = lookedUpItem.originFarmInformation;
+  originFarmLatitude = lookedUpItem.originFarmLatitude;  
+  originFarmLongitude = lookedUpItem.originFarmLongitude;  
     
   return 
   (
@@ -305,9 +314,19 @@ contract SupplyChain {
   address consumerID
   ) 
   {
-    // Assign values to the 9 parameters
   
-    
+  // Assign values to the 9 parameters
+  Item lookedUpItem = items[_upc];
+  itemSKU = lookedUpItem.sku;
+  itemUPC = lookedUpItem.upc;
+  productID = lookedUpItem.productID; 
+  productNotes = lookedUpItem.productNotes;
+  productPrice = lookedUpItem.productPrice;
+  itemState = uint(lookedUpItem.itemState);
+  distributorID = lookedUpItem.distributorID;
+  retailerID = lookedUpItem.retailerID;  
+  consumerID = lookedUpItem.consumerID;
+
   return 
   (
   itemSKU,
