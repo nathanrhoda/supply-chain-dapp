@@ -47,27 +47,22 @@ contract('SupplyChain', function(accounts) {
         
         // Declare and Initialize a variable for event
         var eventEmitted = false
-        
-        // Watch the emitted event Harvested()
-        // var event = supplyChain.Harvested()
-        // await event.watch((err, res) => {
-        //     eventEmitted = true
-        // })
+                
         supplyChain.Harvested({}, (error, result) => {
             if(error) console.error(error);            
             eventEmitted = true;
           });
 
         // Mark an item as Harvested by calling function harvestItem()
-        await supplyChain.harvestItem(upc, originFarmerID, originFarmName, originFarmInformation, originFarmLatitude, originFarmLongitude, productNotes)
+        await debug(supplyChain.harvestItem(upc, originFarmerID, originFarmName, originFarmInformation, originFarmLatitude, originFarmLongitude, productNotes));
 
         // Retrieve the just now saved item from blockchain by calling function fetchItem()        
         
-        const resultBufferOne = await supplyChain.fetchItemBufferOne.call(upc);        
+        const resultBufferOne = await debug(supplyChain.fetchItemBufferOne.call(upc));        
         const resultBufferTwo = await supplyChain.fetchItemBufferTwo.call(upc);
 
         // // Verify the result set
-        assert.equal(resultBufferOne[0], sku, 'Error: Invalid item SKU')
+        assert.equal(resultBufferOne[0].toNumber(), sku, 'Error: Invalid item SKU')
         assert.equal(resultBufferOne[1], upc, 'Error: Invalid item UPC')
         assert.equal(resultBufferOne[2], originFarmerID, 'Error: Missing or Invalid ownerID')
         assert.equal(resultBufferOne[3], originFarmerID, 'Error: Missing or Invalid originFarmerID')
