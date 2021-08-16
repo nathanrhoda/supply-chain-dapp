@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity >=0.4.22 <0.9.0;
+pragma solidity ^0.8.0;
 // Define a contract 'Supplychain'
 contract SupplyChain {
 
@@ -140,7 +140,7 @@ contract SupplyChain {
   // In the constructor set 'owner' to the address that instantiated the contract
   // and set 'sku' to 1
   // and set 'upc' to 1
-  constructor() public payable {
+  constructor() payable {
     owner = msg.sender;
     sku = 1;
     upc = 1;
@@ -149,7 +149,7 @@ contract SupplyChain {
   // Define a function 'kill' if required
   function kill() public {
     if (msg.sender == owner) {
-      address payable payableOwnerAddress = address(uint160(owner));
+      address payable payableOwnerAddress = payable(address(uint160(owner)));
       selfdestruct(payableOwnerAddress);
     }
   }
