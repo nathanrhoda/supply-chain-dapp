@@ -6,6 +6,9 @@ module.exports = {
       network_id: "*" // Match any network id
     }
   },
+  mocha: {
+    timeout: 100000         
+  },
   // Configure your compilers
   compilers: {
     solc: {
