@@ -166,6 +166,7 @@ contract SupplyChain is Ownable, FarmerRole, DistributorRole, RetailerRole, Cons
     item.originFarmLatitude = _originFarmLatitude;
     item.originFarmLongitude = _originFarmLongitude;
     item.productNotes = _productNotes;
+    item.productID = sku + _upc;
     
     items[_upc] = item;
     // Increment sku

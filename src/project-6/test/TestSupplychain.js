@@ -273,23 +273,38 @@ contract('SupplyChain', function(accounts) {
     // 9th Test
     it("Testing smart contract function fetchItemBufferOne() that allows anyone to fetch item details from blockchain", async() => {
         const supplyChain = await SupplyChain.deployed()
-
+        
         // Retrieve the just now saved item from blockchain by calling function fetchItem()
+        const resultBuffer = await supplyChain.fetchItemBufferOne.call(upc, {from: ownerID});        
         
-        
-        // Verify the result set:
-        
+        // Verify the result set:        
+        assert.equal(resultBuffer[0].toNumber(), sku, 'Error: Invalid item SKU')
+        assert.equal(resultBuffer[1], upc, 'Error: Invalid item UPC')
+        assert.equal(resultBuffer[2], consumerID, 'Error: Missing or Invalid ownerID')
+        assert.equal(resultBuffer[3], originFarmerID, 'Error: Missing or Invalid originFarmerID')
+        assert.equal(resultBuffer[4], originFarmName, 'Error: Missing or Invalid originFarmName')
+        assert.equal(resultBuffer[5], originFarmInformation, 'Error: Missing or Invalid originFarmInformation')
+        assert.equal(resultBuffer[6], originFarmLatitude, 'Error: Missing or Invalid originFarmLatitude')
+        assert.equal(resultBuffer[7], originFarmLongitude, 'Error: Missing or Invalid originFarmLongitude')          
     })
 
     // 10th Test
     it("Testing smart contract function fetchItemBufferTwo() that allows anyone to fetch item details from blockchain", async() => {
         const supplyChain = await SupplyChain.deployed()
-
-        // Retrieve the just now saved item from blockchain by calling function fetchItem()
         
+        // Retrieve the just now saved item from blockchain by calling function fetchItem()
+        const resultBuffer = await supplyChain.fetchItemBufferTwo.call(upc);
         
         // Verify the result set:
-        
+        assert.equal(resultBuffer[0].toNumber(), sku, 'Error: Invalid item SKU')
+        assert.equal(resultBuffer[1], upc, 'Error: Invalid item UPC')
+        assert.equal(resultBuffer[2], productID, 'Error: Missing or Invalid productId')
+        assert.equal(resultBuffer[3], productNotes, 'Error: Missing or Invalid productNotes')
+        assert.equal(resultBuffer[4], productPrice, 'Error: Missing or Invalid productPrice')
+        assert.equal(resultBuffer[5], itemState, 'Error: Missing or Invalid State')
+        assert.equal(resultBuffer[6], distributorID, 'Error: Missing or Invalid distributorId')
+        assert.equal(resultBuffer[7], retailerID, 'Error: Missing or Invalid retailerId')          
+        assert.equal(resultBuffer[8], consumerID, 'Error: Missing or Invalid consumerId')          
     })
 
 });
