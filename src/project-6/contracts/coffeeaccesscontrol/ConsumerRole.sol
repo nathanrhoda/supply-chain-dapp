@@ -2,7 +2,7 @@
 pragma solidity >=0.4.22 <0.9.0;
 
 // Import the library 'Roles'
-import {Roles} from "./Roles.sol";
+import  "./Roles.sol";
 
 // Define a contract 'ConsumerRole' to manage this role - add, remove, check
 contract ConsumerRole {
@@ -24,14 +24,13 @@ contract ConsumerRole {
 
   // Define a modifier that checks to see if msg.sender has the appropriate role
   modifier onlyConsumer() {                
-    require(consumers.has(msg.sender), "No consumer role for address");
+    require(isConsumer(msg.sender), "No consumer role for address");
     _;
   }
 
   // Define a function 'isConsumer' to check this role
   function isConsumer(address account) public view returns (bool) {
-    require(consumers.has(account), "No consumer role for address");
-    return true;
+    return consumers.has(account); 
   }
 
   // Define a function 'addConsumer' that adds this role
