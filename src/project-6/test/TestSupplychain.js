@@ -156,6 +156,9 @@ contract('SupplyChain', function(accounts) {
     it("Testing smart contract function buyItem() that allows a distributor to buy coffee", async() => {
         const supplyChain = await SupplyChain.deployed()
         
+        // Assign distributor role to distributor id
+        await supplyChain.addDistributor(distributorID);
+
         // Declare and Initialize a variable for event
         var eventEmitted = false
     
@@ -184,6 +187,7 @@ contract('SupplyChain', function(accounts) {
     it("Testing smart contract function shipItem() that allows a distributor to ship coffee", async() => {
         const supplyChain = await SupplyChain.deployed()
         
+
         // Declare and Initialize a variable for event
         var eventEmitted = false
 
