@@ -1,10 +1,26 @@
+require('dotenv').config();
+var HDWalletProvider = require("@truffle/hdwallet-provider");
+var mnemonicmeta = process.env["MNEMONIC-META"];
+var mnemonic = process.env["MNEMONIC"];
+var tokenKey = process.env["ENDPOINT_KEY"];
+var rinkebyFrom = process.env["RINKEBYFROM"];
+
 module.exports = {
   networks: {
     development: {
       host: "127.0.0.1",
       port: 8545,
       network_id: "*" // Match any network id
-    }
+    },     
+    rinkeby:{
+      host: "localhost",
+      provider: function() {
+        return new HDWalletProvider(mnemonicmeta, "wss://rinkeby.infura.io/ws/v3/" + tokenKey);
+      },
+      network_id:4,
+      gas: 6721975,
+      gasPrice: 10000000000,      
+    },
   },
   mocha: {
     timeout: 100000         
