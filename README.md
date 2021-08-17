@@ -24,3 +24,10 @@ pify
 2. Sequence
 3. State
 4. Class
+
+
+
+-- Hook local environment up to rinkeby and configure accounts getting necessary eth for it 
+-- Run end to end against rinkeby 
+-- Update documentation versions and go through rubric to make sure all doc requirements are fulfilled
+-- Update architecture diagrams
