@@ -3,7 +3,6 @@ var HDWalletProvider = require("@truffle/hdwallet-provider");
 var mnemonicmeta = process.env["MNEMONIC-META"];
 var mnemonic = process.env["MNEMONIC"];
 var tokenKey = process.env["ENDPOINT_KEY"];
-var rinkebyFrom = process.env["RINKEBYFROM"];
 
 module.exports = {
   networks: {
@@ -19,7 +18,7 @@ module.exports = {
       },
       network_id:4,
       gas: 6721975,
-      gasPrice: 10000000000,      
+      gasPrice: 10000000000,                  
     },
   },
   mocha: {

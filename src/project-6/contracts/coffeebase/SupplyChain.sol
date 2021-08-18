@@ -158,7 +158,7 @@ contract SupplyChain is Ownable, FarmerRole, DistributorRole, RetailerRole, Cons
   onlyFarmer
   {
     // Add the new item as part of Harvest
-    Item memory item = items[_upc];
+    Item memory item;
     item.sku = sku;
     item.upc = _upc;
     item.ownerID = _originFarmerID;
@@ -169,10 +169,13 @@ contract SupplyChain is Ownable, FarmerRole, DistributorRole, RetailerRole, Cons
     item.originFarmLongitude = _originFarmLongitude;
     item.productNotes = _productNotes;
     item.productID = sku + _upc;
-    
-    items[_upc] = item;
+        
     // Increment sku
     sku = sku + 1;
+
+    item.itemState = State.Harvested;
+    items[_upc] = item;
+
     // Emit the appropriate event
     emit Harvested(_upc);
   }

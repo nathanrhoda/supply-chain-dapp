@@ -1,12 +1,13 @@
-App = {
+App = {    
+
     web3Provider: null,
     contracts: {},
     emptyAddress: "0x0000000000000000000000000000000000000000",
     sku: 0,
     upc: 0,
-    metamaskAccountID: "0x3d256ea8d155F7328A6497D128F93808AE744FB2",
-    ownerID: "0x3d256ea8d155F7328A6497D128F93808AE744FB2",
-    originFarmerID: "0x639eB9164E65dE52a958E833f1E9857BC3d85E40",
+    metamaskAccountID: "0xED2daCc6917Cda47E923B4B4E820Da1Ba33f66DC",
+    ownerID: "0xED2daCc6917Cda47E923B4B4E820Da1Ba33f66DC",
+    originFarmerID: "0xED2daCc6917Cda47E923B4B4E820Da1Ba33f66DC",
     originFarmName: null,
     originFarmInformation: null,
     originFarmLatitude: null,
@@ -14,29 +15,29 @@ App = {
     productNotes: null,
     productPrice: 0,
     distributorID: "0x22aad3e12910bB97f672C6f750908F72964dF60F",
-    retailerID: "0xf15fc32C41fADA038c252c30B9fDd7c86EE45114",
-    consumerID: "0x317f9dbe85c30A722df06e625b478cBFcF0E6Ab0",
+    retailerID: "0xDcb49Fe91C1F379612442D8ADA039A2b3Bade86a",
+    consumerID: "0x63E31Fe2c7074b303B61067D5AE779A37eB820af",
     
-    init: async function () {
+    init: async function () {             
         App.readForm();
         /// Setup access to blockchain
         return await App.initWeb3();
     },
 
-    readForm: function () {
+    readForm: function () {        
         App.sku = $("#sku").val();
         App.upc = $("#upc").val();
-        App.ownerID = $("#ownerID").val();
-        App.originFarmerID = $("#originFarmerID").val();
+        $("#ownerID").val(App.metamaskAccountID);
+        $("#originFarmerID").val(App.originFarmerID);
         App.originFarmName = $("#originFarmName").val();
         App.originFarmInformation = $("#originFarmInformation").val();
         App.originFarmLatitude = $("#originFarmLatitude").val();
         App.originFarmLongitude = $("#originFarmLongitude").val();
         App.productNotes = $("#productNotes").val();
         App.productPrice = $("#productPrice").val();
-        App.distributorID = $("#distributorID").val();
-        App.retailerID = $("#retailerID").val();
-        App.consumerID = $("#consumerID").val();
+        $("#distributorID").val(App.distributorID);
+        $("#retailerID").val(App.retailerID);
+        $("#consumerID").val(App.consumerID);
 
         console.log(
             App.sku,
@@ -56,6 +57,7 @@ App = {
     },
 
     initWeb3: async function () {
+        
         /// Find or Inject Web3 Provider
         /// Modern dapp browsers...
         if (window.ethereum) {
@@ -93,6 +95,7 @@ App = {
             }
             console.log('getMetaskID:',res);
             App.metamaskAccountID = res[0];
+            web3.eth.defaultAccount = res[0];
 
         })
     },
@@ -130,8 +133,8 @@ App = {
         console.log('processId',processId);
 
         switch(processId) {
-            case 1:
-                return await App.harvestItem(event);
+            case 1:                                
+                return await App.harvestItem(event);                
                 break;
             case 2:
                 return await App.processItem(event);
@@ -165,9 +168,10 @@ App = {
 
     harvestItem: function(event) {
         event.preventDefault();
-        var processId = parseInt($(event.target).data('id'));
+        var processId = parseInt($(event.target).data('id'));        
 
-        App.contracts.SupplyChain.deployed().then(function(instance) {
+        App.readForm();
+        App.contracts.SupplyChain.deployed().then(function(instance) {            
             return instance.harvestItem(
                 App.upc, 
                 App.metamaskAccountID, 
@@ -178,9 +182,9 @@ App = {
                 App.productNotes
             );
         }).then(function(result) {
-            $("#ftc-item").text(result);
+            $("#ftc-item").text(result);            
             console.log('harvestItem',result);
-        }).catch(function(err) {
+        }).catch(function(err) {            
             console.log(err.message);
         });
     },
