@@ -24,6 +24,7 @@ Used to move configuration to environment variables to make it easy to swop betw
 
 ### Uml Documents included in uml directory include
 1. Activity
+![Activity Diagram](https://github.com/nathanrhoda/supply-chain-dapp/blob/main/uml/activity-diagram.PNG)
 
 2. Sequence
 3. State
