@@ -9,15 +9,18 @@ Rinkeby Address: https://rinkeby.etherscan.io/address/0xa52ae4A486E9c2f6EB805E61
 
 
 ### Libraries used and why
-Openzeppelin
-truffle-hdwallet-provider
-dotenv
-pify
+1. truffle-hdwallet-provider
+Used to connect to metamask
+
+2. dotenv
+Used to move configuration to environment variables to make it easy to swop between local ganache and rinkeby
+
+
 
 ### Version numbers
-1. Node: 
-2. Truffle:
-3. web3:
+1. Node: v14.17.3
+2. Truffle: v5.4.6
+3. web3: 1.5.2
 
 ### Uml Documents included in uml directory include
 1. Activity
@@ -26,8 +29,5 @@ pify
 4. Class
 
 
-
--- Hook local environment up to rinkeby and configure accounts getting necessary eth for it 
--- Run end to end against rinkeby 
 -- Update documentation versions and go through rubric to make sure all doc requirements are fulfilled
 -- Update architecture diagrams
