@@ -35,5 +35,4 @@ Used to move configuration to environment variables to make it easy to swop betw
 4. Class
 ![Class Diagram](https://github.com/nathanrhoda/supply-chain-dapp/blob/main/uml/class-diagram.PNG)
 
--- Update architecture diagrams 
--- Update readme with architecture diagrams
+-- Update class diagram and readme
