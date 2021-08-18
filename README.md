@@ -29,5 +29,5 @@ Used to move configuration to environment variables to make it easy to swop betw
 4. Class
 
 
--- Update documentation versions and go through rubric to make sure all doc requirements are fulfilled
--- Update architecture diagrams
+-- Update architecture diagrams 
+-- Update readme with architecture diagrams
