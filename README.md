@@ -27,9 +27,13 @@ Used to move configuration to environment variables to make it easy to swop betw
 ![Activity Diagram](https://github.com/nathanrhoda/supply-chain-dapp/blob/main/uml/activity-diagram.PNG)
 
 2. Sequence
-3. State
-4. Class
+![Sequence Diagram](https://github.com/nathanrhoda/supply-chain-dapp/blob/main/uml/sequence-diagram.PNG)
 
+3. State
+![State Diagram](https://github.com/nathanrhoda/supply-chain-dapp/blob/main/uml/state-diagram.PNG)
+
+4. Class
+![Class Diagram](https://github.com/nathanrhoda/supply-chain-dapp/blob/main/uml/class-diagram.PNG)
 
 -- Update architecture diagrams 
 -- Update readme with architecture diagrams
