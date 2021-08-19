@@ -33,6 +33,6 @@ Used to move configuration to environment variables to make it easy to swop betw
 ![State Diagram](https://github.com/nathanrhoda/supply-chain-dapp/blob/main/uml/state-diagram.PNG)
 
 4. Class
-![Class Diagram](https://github.com/nathanrhoda/supply-chain-dapp/blob/main/uml/class-diagram.PNG)
+![Class Diagram](https://github.com/nathanrhoda/supply-chain-dapp/blob/main/uml/class-diagram.png)
 
 
